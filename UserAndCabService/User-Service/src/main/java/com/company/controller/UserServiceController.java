@@ -15,6 +15,7 @@ import com.company.dto.Cab;
 import com.company.entities.User;
 import com.company.service.CabServiceFeign;
 import com.company.service.UserService;
+import com.company.service.UserServiceImpl;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.annotation.PostConstruct;
@@ -34,8 +35,8 @@ public class UserServiceController {
 	 @CircuitBreaker(name="cabCB", fallbackMethod = "defaultCabs")
 	 //@Retry(name="cabCB", fallbackMethod = "defaultCabs")
 	 ResponseEntity<List<Cab>> getAllCabs(){ 
-		 System.out.println("Retry called");
-		 return new ResponseEntity<>(feign.getAllCabs(),HttpStatus.OK); 
+		 //return new ResponseEntity<>(feign.getAllCabs(),HttpStatus.OK); 
+		 return new ResponseEntity<>(UserServiceImpl.cabs,HttpStatus.OK);
 		 }
 	 
 	 ResponseEntity<List<Cab>> defaultCabs(Exception e){
