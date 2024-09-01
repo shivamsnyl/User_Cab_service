@@ -21,31 +21,22 @@ public class MQConfig {
 	public static final String QUEUE_NAME = "MQFirstQueue";
 	public static final String KEY = "iloverabbitmq";
 
-	@Bean
-	public Queue queue() {
-		return new Queue(MQConfig.QUEUE_NAME);
-	}
-
-	@Bean
-	public Exchange exchange() {
-		return new DirectExchange(MQConfig.EXCH_NAME);
-	}
-	
-	@Bean
-	public MessageConverter converter() {
-		return new Jackson2JsonMessageConverter();
-	}
-
-	@Bean
-	public Binding binding(Queue queue, Exchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with(MQConfig.KEY).noargs();
-	}
-
-	@Bean
-	public AmqpTemplate template(ConnectionFactory factory) {
-		RabbitTemplate template = new RabbitTemplate(factory);
-		template.setMessageConverter(converter());
-		return template;
-		
-	}
+	/*
+	 * @Bean public Queue queue() { return new Queue(MQConfig.QUEUE_NAME); }
+	 * 
+	 * @Bean public Exchange exchange() { return new
+	 * DirectExchange(MQConfig.EXCH_NAME); }
+	 * 
+	 * @Bean public MessageConverter converter() { return new
+	 * Jackson2JsonMessageConverter(); }
+	 * 
+	 * @Bean public Binding binding(Queue queue, Exchange exchange) { return
+	 * BindingBuilder.bind(queue).to(exchange).with(MQConfig.KEY).noargs(); }
+	 * 
+	 * @Bean public AmqpTemplate template(ConnectionFactory factory) {
+	 * RabbitTemplate template = new RabbitTemplate(factory);
+	 * template.setMessageConverter(converter()); return template;
+	 * 
+	 * }
+	 */
 }
