@@ -2,8 +2,6 @@ package com.company.entities;
 
 import java.util.List;
 
-import com.company.dto.Cab;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;

@@ -1,39 +1,18 @@
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    service-url:
-     defaultZone: http://localhost:8761/eureka/
+server:
+  port: 9002
      
-resilience4j:
-  circuitbreaker:
-    instances: 
-     cabCB:
-      registerHealthIndicator: true
-      slidingWindowSize: 10
-      minimumNumberOfCalls: 5
-      permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
-      waitDurationInOpenState: 5s
-      failureRateThreshold: 50
-      eventConsumerBufferSize: 10
-      
-  retry:
-    instances:
-      cabCB:
-        max-attempts: 5
-        wait-duration: 5s
-      
-management:
-  health:
-    circuitbreakers:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include:
-        - health
-  endpoint:
-    health:
-      show-details: always
-      
+spring:
+  config:
+    import:
+    - configserver:http://localhost:8085
+  application:
+    name: USER-SERVICE
+    
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+           client-name: google
+           client-id: 838259786920-hu15urflc4stb871bdq4vk3enddmjei0.apps.googleusercontent.com 
+           client-secret: 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

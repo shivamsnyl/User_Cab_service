@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.company.dto.Cab;
+import com.company.entities.Cab;
 
 @FeignClient(name="CAB-SERVICE")
 public interface CabServiceFeign {
