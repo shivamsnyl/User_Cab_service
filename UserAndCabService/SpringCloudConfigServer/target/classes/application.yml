@@ -1,0 +1,11 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: CLOUD-CONFIG-SERVER
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/shivamsnyl/CloudConfiguration.git
+          clone-on-start: true
